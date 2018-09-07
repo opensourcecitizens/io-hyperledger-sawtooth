@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package io.mtini.proto;
+
+option java_outer_classname="CustomerAccountProtos";
+
+enum AccountType {
+   DEBIT = 0;
+   CREDIT = 1;
+}
+
+message LedgerEntries {
+
+message LedgerData {
+  string accountName = 1;
+  string leftAccount = 2;
+  string rightAccount = 3;
+  AccountType action = 4;
+  double amount = 5;   
+  double balance = 6;   
+
+
+  message JournalData {
+  	int64 date = 1;
+  	AccountType accountType = 2;
+  	double debitAmount = 3;   
+  	double creditAmount = 4;   
+  	string notes = 5;
+  }
+  //one JournalData per LedgerData entry 
+  repeated JournalData journal = 7;
+}
+
+ repeated LedgerData ledgerEntry = 1;
+ 
+ }
