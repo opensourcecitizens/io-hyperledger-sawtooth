@@ -21,7 +21,7 @@ public class MyTransactionProcessor {
 	logger.info("argument 1 "+args[0]);
 	TransactionProcessor simpleProcessor = new TransactionProcessor(args[0]);
 	// Create simple wallet transaction handler and register with the validator
-	simpleProcessor.addHandler(new SimpleJournalAndLedgerHandler());
+	simpleProcessor.addHandler(new AuditJournalAndLedgerHandler());
 	//simpleProcessor.addHandler(new XoHandler());
 	Thread thread = new Thread(simpleProcessor);
 	//start the transaction processor
